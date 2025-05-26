@@ -8,13 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="frm" action="action.jsp">
-	<table border=1>
-		<tr>
-			<td>주민번호</td>
-			<td><input name='' id='' value=''></td>
-		</tr>
-	</table>
-</form>
+<h2>과정평가형 자격 CBQ</h2>
+<pre>
+무언가의 내용이 들어있음.
+
+내용
+
+내용
+
+내용
+
+내용
+</pre>
 </body>
 </html>

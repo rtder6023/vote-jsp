@@ -80,4 +80,59 @@ SELECT M.M_NO AS 후보번호,
 FROM  TBL_MEMBER_202005 M
 JOIN  TBL_PARTY_202005 P ON P.P_CODE = M.P_CODE
 
-SELECT V_JUMIN,
+SELECT V_NAME AS 성명,  
+	   '19' || SUBSTR(V_JUMIN,1,2) || '년' || SUBSTR(V_JUMIN,3,2) || '월' || SUBSTR(V_JUMIN,5,2) || '일생' AS 생년월일,
+	   '만 ' || (TO_NUMBER(TO_CHAR(SYSDATE, 'YYYY')) - TO_NUMBER('19' || SUBSTR(V_JUMIN,1,2))) || '세' AS 나이,
+	   (CASE SUBSTR(V_JUMIN, 7, 1)
+	   		WHEN '1' THEN '남'
+	   		WHEN '2' THEN '여'
+	   		END) AS 성별,
+	   	M_NO AS 후보번호,
+	   	SUBSTR(V_TIME,1,2) || ':' || SUBSTR(V_TIME,3) AS 투표시간,
+	   	(CASE V_CONFIRM
+	   		WHEN 'N' THEN '미확인'
+	   		WHEN 'Y' THEN '확인'
+	   		END) AS 유권자확인
+	   	FROM TBL_VOTE_202005
+
+SELECT V_NAME AS 성명,  
+	   '19' || SUBSTR(V_JUMIN,1,2)|| 
+	   '년' || SUBSTR(V_JUMIN,3,2)|| 
+	   '월' || SUBSTR(V_JUMIN,5,2)|| 
+	   '일생' AS 생년월일,
+	   '만 ' || (TO_NUMBER(TO_CHAR(SYSDATE, 'YYYY')) - TO_NUMBER('19' || SUBSTR(V_JUMIN,1,2))) || '세' AS 나이,
+	   (CASE SUBSTR(V_JUMIN, 7, 1)
+	   		WHEN '1' THEN '남'
+	   		WHEN '2' THEN '여'
+	   		END) AS 성별,
+	   	M_NO AS 후보번호,
+	   	SUBSTR(V_TIME,1,2) || ':' || SUBSTR(V_TIME,3) AS 투표시간,
+	   	(CASE V_CONFIRM
+	   		WHEN 'N' THEN '미확인'
+	   		WHEN 'Y' THEN '확인'
+	   		END) AS 유권자확인
+	   	FROM TBL_VOTE_202005	   	
+	   	
+SELECT M.M_NO AS 후보번호, 
+			 		  M.M_NAME AS 성명,  
+			 P.P_NAME AS 소속정당, 
+			 (CASE P_SCHOOL 
+			 	WHEN '1' THEN '고졸'
+			 	WHEN '2' THEN '학사' 
+			 	WHEN '3' THEN '석사' 
+			 	WHEN '4' THEN '박사'
+			 END) AS 학력, 
+			 SUBSTR(M_JUMIN, 1, 6) || '-' || SUBSTR(M_JUMIN, 7) AS 주민번호, 
+ 			 M.M_CITY AS 지역구, 
+			 TRIM(P.P_TEL1) || '-' || TRIM(P.P_TEL2) || '-' || TRIM(P.P_TEL3) AS 대표전화 
+			 FROM  TBL_MEMBER_202005 M 
+			 JOIN  TBL_PARTY_202005 P ON P.P_CODE = M.P_CODE 
+			 
+SELECT M.M_NO AS 후보번호,
+	   M.M_NAME AS 성명,  
+	   COUNT(V.M_NO) AS 총투표건수
+FROM   TBL_MEMBER_202005 M
+JOIN   TBL_VOTE_202005 V ON V.M_NO = M.M_NO
+GROUP BY M.M_NO, M.M_NAME
+ORDER BY 총투표건수 DESC
+	   
