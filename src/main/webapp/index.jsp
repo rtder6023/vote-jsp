@@ -14,7 +14,7 @@
 <nav>
 	<ul>
 		<li><a target="section_page" href="list.jsp">후보조회</a></li>
-		<li><a target="section_page" href="list.jsp">투표하기</a></li>
+		<li><a target="section_page" href="insert.jsp">투표하기</a></li>
 		<li><a target="section_page" href="list2.jsp">투표검수조회</a></li>
 		<li><a target="section_page" href="list3.jsp">후보자등수</a></li>
 		<li><a target="section_page" href="main.jsp">홈으로</a></li>
