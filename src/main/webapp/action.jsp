@@ -16,12 +16,12 @@ String V_AREA = request.getParameter("V_AREA");
 String V_CONFIRM = request.getParameter("V_CONFIRM");
 
 String sql = " INSERT INTO TBL_VOTE_202005 VALUES ( " +
-			 " 										'" + V_JUMIN + "', " +
-			 " 										'" + V_NAME + "', " +
-			 " 										'" + M_NO + "', " +
-			 " 										'" + V_TIME + "', " +
-			 " 										'" + V_AREA + "', " +
-			 " 										'" + V_CONFIRM + "') ";
+			 " 									   '" + V_JUMIN   + "', " +
+			 " 									   '" + V_NAME    + "', " +
+			 " 									   '" + M_NO      + "', " +
+			 " 									   '" + V_TIME    + "', " +
+			 " 									   '" + V_AREA    + "', " +
+			 " 									   '" + V_CONFIRM + "') " ;
 ResultSet rs = stmt.executeQuery(sql);
 response.sendRedirect("main.jsp");
 

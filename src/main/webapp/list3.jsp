@@ -13,13 +13,13 @@
 request.setCharacterEncoding("UTF-8");
 Connection conn = Util.getConnection();
 Statement stmt = conn.createStatement();
-String sql = " SELECT M.M_NO AS 후보번호, " +
-			 " M.M_NAME AS 성명,  " +
-			 " COUNT(V.M_NO) AS 총투표건수 " +
-			 " FROM   TBL_MEMBER_202005 M " +
+String sql = " SELECT M.M_NO AS 후보번호, 					   " +
+			 " M.M_NAME AS 성명,  						   " +
+			 " COUNT(V.M_NO) AS 총투표건수 					   " +
+			 " FROM   TBL_MEMBER_202005 M 				   " +
 			 " JOIN   TBL_VOTE_202005 V ON V.M_NO = M.M_NO " +
-			 " GROUP BY M.M_NO, M.M_NAME " +
-			 " ORDER BY 총투표건수 DESC ";
+			 " GROUP BY M.M_NO, M.M_NAME 				   " +
+			 " ORDER BY 총투표건수 DESC 					   " ;
 ResultSet rs = stmt.executeQuery(sql);
 %>
 <body>
